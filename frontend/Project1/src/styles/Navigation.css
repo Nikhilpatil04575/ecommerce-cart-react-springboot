@@ -1,0 +1,31 @@
+a {
+    text-decoration: none;
+    color: black;
+    position: relative; /* Required for the pseudo-element */
+}
+
+.hidden-link {
+    visibility: hidden; /* Makes it invisible but retains space */
+    pointer-events: none; /* Prevents clicking */
+}
+
+.active-link {
+    font-weight: bold; /* Optional: Makes the active link bold */
+}
+
+.active-link::after {
+    content: ""; /* Creates a pseudo-element */
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Adjusts the position of the underline */
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background-color: red; /* Red underline */
+    transition: width 0.2s ease-in-out; /* Smooth filling effect */
+    transform-origin: left; /* Ensures the animation starts from the left */
+}
+
+.active-link:hover::after,
+.active-link:focus::after {
+    width: 100%; /* Expands the underline fully */
+}
